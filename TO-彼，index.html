@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>彼，生日快乐！🎉</title>
-  <!-- 使用 Google Font 艺术字体 -->
+  <title>🎂 彼，生日快乐！</title>
+  <!-- 艺术字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <style>
     * {
@@ -22,12 +22,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
       color: #fff;
       user-select: none;
     }
 
-    /* 全屏容器 —— 滑动翻页 */
     .fullscreen-carousel {
       position: relative;
       width: 100vw;
@@ -60,7 +58,7 @@
       overflow-y: auto;
     }
 
-    /* 标题：照片上方，艺术字体，大，居中 */
+    /* 标题 */
     .photo-title {
       font-family: 'Dancing Script', 'ZCOOL KuaiLe', cursive;
       font-size: clamp(2.4rem, 12vw, 4.8rem);
@@ -76,7 +74,7 @@
       max-width: 800px;
     }
 
-    /* 图片容器：自适应尺寸，保持比例 */
+    /* 图片容器 */
     .photo-frame {
       width: 90%;
       max-width: 700px;
@@ -100,7 +98,6 @@
       border-radius: 28px 8px 28px 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       display: block;
-      transition: transform 0.3s ease;
       background: #2a2a3e;
     }
 
@@ -115,7 +112,7 @@
       display: none;
     }
 
-    /* 祝福语 (全屏) */
+    /* 全屏祝福层 */
     .birthday-message {
       position: absolute;
       top: 0;
@@ -186,7 +183,7 @@
       border: 1px solid rgba(255,215,150,0.2);
     }
 
-    /* 左右箭头 (只在非移动端显示) */
+    /* 左右箭头 */
     .arrow-nav {
       position: absolute;
       top: 50%;
@@ -218,14 +215,10 @@
       transform: translateY(-50%) scale(1.06);
     }
 
-    .arrow-left {
-      left: 1.5rem;
-    }
-    .arrow-right {
-      right: 1.5rem;
-    }
+    .arrow-left { left: 1.5rem; }
+    .arrow-right { right: 1.5rem; }
 
-    /* 烟花画布 (最后一页) */
+    /* 烟花画布 */
     #fireworks-canvas {
       position: absolute;
       top: 0;
@@ -236,56 +229,22 @@
       z-index: 5;
     }
 
-    /* 移动端适配：触摸友好 */
+    /* 移动端适配 */
     @media (max-width: 640px) {
-      .photo-title {
-        font-size: clamp(1.8rem, 10vw, 3.2rem);
-      }
-      .photo-frame {
-        width: 94%;
-        max-height: 60vh;
-        padding: 0.5rem;
-      }
-      .photo-frame img {
-        max-height: 50vh;
-      }
-      .arrow-nav {
-        width: 48px;
-        height: 48px;
-        font-size: 2.2rem;
-        opacity: 0.7;
-      }
-      .arrow-left {
-        left: 0.6rem;
-      }
-      .arrow-right {
-        right: 0.6rem;
-      }
-      .birthday-message p {
-        font-size: clamp(1.2rem, 5vw, 2.2rem);
-        padding: 0.4rem 1rem;
-      }
-      .birthday-message h1 {
-        font-size: clamp(2.8rem, 14vw, 5rem);
-      }
-      .nav-hint {
-        bottom: 1.2rem;
-        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
-      }
-      .nav-hint i {
-        margin: 0 6px;
-        padding: 0 10px;
-      }
+      .photo-title { font-size: clamp(1.8rem, 10vw, 3.2rem); }
+      .photo-frame { width: 94%; max-height: 60vh; padding: 0.5rem; }
+      .photo-frame img { max-height: 50vh; }
+      .arrow-nav { width: 48px; height: 48px; font-size: 2.2rem; opacity: 0.7; }
+      .arrow-left { left: 0.6rem; }
+      .arrow-right { right: 0.6rem; }
+      .birthday-message p { font-size: clamp(1.2rem, 5vw, 2.2rem); padding: 0.4rem 1rem; }
+      .birthday-message h1 { font-size: clamp(2.8rem, 14vw, 5rem); }
+      .nav-hint { bottom: 1.2rem; font-size: clamp(0.8rem, 3.5vw, 1.2rem); }
+      .nav-hint i { margin: 0 6px; padding: 0 10px; }
     }
 
-    /* 隐藏滚动条 */
-    .slide::-webkit-scrollbar {
-      display: none;
-    }
-    .slide {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .slide::-webkit-scrollbar { display: none; }
+    .slide { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body>
@@ -298,15 +257,15 @@
       <div class="photo-title">🌸 花之日</div>
       <div class="photo-frame"><img src="1.JPG" alt="花之日"></div>
     </div>
-    <!-- 2. 小王子- B612号小行星 -->
+    <!-- 2. 小王子 · B612 -->
     <div class="slide" data-index="1">
       <div class="photo-title">🌟 小王子 · B612</div>
       <div class="photo-frame"><img src="2.JPG" alt="小王子- B612号小行星"></div>
     </div>
-    <!-- 3. 四叶草🍀 -->
+    <!-- 3. 四叶草 -->
     <div class="slide" data-index="2">
       <div class="photo-title">🍀 四叶草</div>
-      <div class="photo-frame"><img src="3.JPG" alt="四叶草🍀"></div>
+      <div class="photo-frame"><img src="3.JPG" alt="四叶草"></div>
     </div>
     <!-- 4. INFP & ISTJ -->
     <div class="slide" data-index="3">
@@ -332,7 +291,6 @@
         <h1>🎂 生日快乐</h1>
         <p>愿你的世界永远有花、有光、<br>有期待新一天到来的理由</p>
       </div>
-      <!-- 烟花 canvas -->
       <canvas id="fireworks-canvas"></canvas>
     </div>
   </div>
@@ -347,15 +305,15 @@
   </div>
 </div>
 
-<!-- 自动播放音乐 (背景) -->
+<!-- 背景音乐 -->
 <audio id="bgMusic" autoplay loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
   您的浏览器不支持音频播放。
 </audio>
 
 <script>
-  (function(){
-    // ---- 配置 ----
+  (function() {
+    // ---- 核心变量 ----
     const slidesWrapper = document.getElementById('slidesWrapper');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
@@ -364,17 +322,16 @@
 
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-
-    // 音乐自动播放（部分浏览器需用户交互，但autoplay已写，再加一层保险）
     const music = document.getElementById('bgMusic');
-    // 如果自动播放被阻止，点击页面任意处尝试播放
+
+    // 点击页面恢复音频播放
     document.addEventListener('click', function resumeAudio() {
       if (music.paused) {
         music.play().catch(() => {});
       }
     }, { once: false });
 
-    // 更新幻灯片位置
+    // 切换到指定幻灯片
     function goToSlide(index) {
       if (isTransitioning || index === currentIndex) return;
       if (index < 0) index = 0;
@@ -382,77 +339,82 @@
       isTransitioning = true;
       currentIndex = index;
       slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-      // 触发烟花：如果是最后一页 (index === totalSlides-1)
+
+      // 处理烟花：最后一页显示并启动，其他页隐藏并清除
+      const canvas = document.getElementById('fireworks-canvas');
       if (currentIndex === totalSlides - 1) {
-        initFireworks();
+        if (canvas) {
+          canvas.style.display = 'block';
+          initFireworks();
+        }
       } else {
-        // 清除烟花 (隐藏canvas)
-        const canvas = document.getElementById('fireworks-canvas');
         if (canvas) {
           canvas.style.display = 'none';
           const ctx = canvas.getContext('2d');
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+          // 停止动画
+          if (window._fireworkFrame) {
+            cancelAnimationFrame(window._fireworkFrame);
+            window._fireworkFrame = null;
+          }
         }
       }
+
       setTimeout(() => {
         isTransitioning = false;
       }, 520);
     }
 
-    // 上一页 / 下一页
-    function prevSlide() {
-      if (currentIndex > 0) goToSlide(currentIndex - 1);
-    }
-    function nextSlide() {
-      if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1);
-    }
+    function prevSlide() { if (currentIndex > 0) goToSlide(currentIndex - 1); }
+    function nextSlide() { if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1); }
 
-    // 事件绑定
+    // ---- 事件绑定 ----
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
 
-    // 键盘监听 (左右方向键)
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        prevSlide();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        nextSlide();
-      }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); }
     });
 
-    // 触摸滑动 (简单支持)
+    // 触摸滑动
     let touchStartX = 0;
-    let touchEndX = 0;
     const carousel = document.getElementById('carousel');
     carousel.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
     carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+      const touchEndX = e.changedTouches[0].screenX;
       const diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 40) {
-        if (diff > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
+        diff > 0 ? nextSlide() : prevSlide();
       }
     }, { passive: true });
 
-    // ---- 🎆 烟花 (只在最后一页) ----
+    // ---- 🎆 烟花系统 (增强版) ----
+    let fireworksActive = false;
+    let particles = [];
+    let animationFrame = null;
+
     function initFireworks() {
       const canvas = document.getElementById('fireworks-canvas');
       if (!canvas) return;
-      canvas.style.display = 'block';
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // 如果已有动画，先停止
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+      particles = [];
+      fireworksActive = true;
+
+      // 设置画布尺寸
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      const ctx = canvas.getContext('2d');
 
-      // 粒子数组
-      let particles = [];
-      const colors = ['#ffd700', '#ff6b6b', '#ff9f43', '#f368e0', '#48dbfb', '#1dd1a1', '#feca57', '#ff9ff3'];
+      const colors = ['#ffd700', '#ff6b6b', '#ff9f43', '#f368e0', '#48dbfb', '#1dd1a1', '#feca57', '#ff9ff3', '#ff4757', '#2ed573'];
 
       class Particle {
         constructor(x, y, color) {
@@ -463,10 +425,9 @@
           this.vx = (Math.random() - 0.5) * 10;
           this.vy = (Math.random() - 0.5) * 10 - 4;
           this.alpha = 1;
-          this.deceleration = 0.98;
-          this.gravity = 0.1;
           this.life = 1;
           this.damping = 0.99;
+          this.gravity = 0.08;
         }
         update() {
           this.vx *= this.damping;
@@ -474,8 +435,8 @@
           this.vy += this.gravity;
           this.x += this.vx;
           this.y += this.vy;
-          this.alpha -= 0.012;
-          this.life -= 0.012;
+          this.alpha -= 0.015;
+          this.life -= 0.015;
           this.radius *= 0.995;
         }
         draw() {
@@ -491,13 +452,12 @@
         }
       }
 
-      // 生成烟花 (多个爆炸)
       function createExplosion(cx, cy) {
-        const count = 60 + Math.floor(Math.random() * 40);
+        const count = 60 + Math.floor(Math.random() * 50);
         const color = colors[Math.floor(Math.random() * colors.length)];
         for (let i = 0; i < count; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = Math.random() * 5 + 2;
+          const speed = Math.random() * 6 + 2;
           const p = new Particle(cx, cy, color);
           p.vx = Math.cos(angle) * speed;
           p.vy = Math.sin(angle) * speed - 1.5;
@@ -506,18 +466,22 @@
         }
       }
 
-      // 随机发射烟花 (从底部向上)
       function launchFirework() {
+        if (!fireworksActive) return;
         const x = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
         const y = canvas.height * 0.2 + Math.random() * canvas.height * 0.4;
         createExplosion(x, y);
       }
 
-      // 动画循环
-      let frameId = null;
       function animate() {
+        if (!fireworksActive) {
+          // 清理画布
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          animationFrame = null;
+          return;
+        }
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // 更新粒子
+
         for (let i = particles.length - 1; i >= 0; i--) {
           const p = particles[i];
           p.update();
@@ -527,54 +491,50 @@
             p.draw();
           }
         }
-        // 如果粒子太少，补充新烟花
-        if (particles.length < 50) {
+
+        // 生成新烟花
+        if (particles.length < 60) {
           launchFirework();
-          if (Math.random() < 0.3) launchFirework(); // 偶尔双响
+          if (Math.random() < 0.25) launchFirework();
         }
-        frameId = requestAnimationFrame(animate);
+
+        animationFrame = requestAnimationFrame(animate);
       }
 
-      // 清除旧动画，开始新动画
-      if (frameId) cancelAnimationFrame(frameId);
-      particles = [];
       // 初始生成几朵
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          launchFirework();
-        }, i * 400);
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => { if (fireworksActive) launchFirework(); }, i * 400 + 100);
       }
+
       animate();
 
-      // 窗口尺寸变化重置canvas
+      // 窗口尺寸变化重置
       function resizeCanvas() {
+        if (!fireworksActive) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
       window.addEventListener('resize', resizeCanvas);
-      // 存储清理函数 (可选)
+      // 存储清理引用
       canvas._resizeHandler = resizeCanvas;
     }
 
-    // 如果一开始就是最后一页（比如只有7张，初始第0页，不会触发，但以防万一）
-    // 但初始在第一页，所以没问题。 手动检查当前页
-    // 在goToSlide 中已处理
-
-    // 额外：初始显示第一页，且确保烟花隐藏
+    // ---- 初始加载 ----
     window.addEventListener('load', function() {
+      // 默认显示第一页
       goToSlide(0);
-      // 确保canvas隐藏
+      // 隐藏烟花画布
       const canvas = document.getElementById('fireworks-canvas');
       if (canvas) {
         canvas.style.display = 'none';
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
-      // 尝试自动播放音乐
+      // 尝试播放音乐
       music.play().catch(() => {});
     });
 
-    // 重绘调整
+    // 窗口变化时重置烟花画布尺寸 (如果可见)
     window.addEventListener('resize', function() {
       const canvas = document.getElementById('fireworks-canvas');
       if (canvas && canvas.style.display !== 'none') {
@@ -586,6 +546,5 @@
   })();
 </script>
 
-<!-- 备注：请确保 1.JPG ~ 7.JPG 以及 music.mp3 位于同一目录下 -->
 </body>
 </html>
