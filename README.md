@@ -1,5 +1,3 @@
-# To-White-Happy-Birthday
-/#
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -62,7 +60,235 @@
 
     /* 标题 */
     .photo-title {
-      font-family: 'Dancing Script', 'ZCOOL KuaiLe', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffdde1;
+      text-shadow: 0 0 20px rgba(255, 100, 150, 0.6);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* 补充样式，让幻灯片内容更丰富 */
+    .slide p {
+      font-size: 1.2rem;
+      max-width: 80%;
+      line-height: 1.8;
+      color: #e0d6ff;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.8rem 1.5rem;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 200, 220, 0.15);
+    }
+
+    .slide .emoji-big {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 15px #ff99aa);
+    }
+
+    /* 简单的导航指示 (小圆点) */
+    .dots {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: background 0.3s, transform 0.3s;
+      pointer-events: auto;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: #ff9eb5;
+      transform: scale(1.3);
+      box-shadow: 0 0 16px #ff7a9e;
+    }
+
+    /* 左右箭头 (可选) */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 2.2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+
+    .arrow:hover {
+      background: rgba(255, 120, 160, 0.3);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .arrow-left {
+      left: 16px;
+    }
+
+    .arrow-right {
+      right: 16px;
+    }
+
+    /* 移动端触摸优化 */
+    @media (max-width: 600px) {
+      .photo-title {
+        font-size: 1.8rem;
+      }
+      .slide p {
+        font-size: 1rem;
+        max-width: 90%;
+        padding: 0.6rem 1rem;
+      }
+      .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.6rem;
+      }
+      .arrow-left {
+        left: 8px;
+      }
+      .arrow-right {
+        right: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="fullscreen-carousel" id="carousel">
+  <div class="slides-wrapper" id="slidesWrapper">
+    <!-- 幻灯片 1 -->
+    <div class="slide">
+      <div class="emoji-big">🎂</div>
+      <div class="photo-title">✨ 彼，生日快乐 ✨</div>
+      <p>今天是属于你的特别日子，<br>愿每一刻都闪着光。</p>
+    </div>
+    <!-- 幻灯片 2 -->
+    <div class="slide">
+      <div class="emoji-big">🎈</div>
+      <div class="photo-title">🌟 愿你永远炽热</div>
+      <p>像星星一样明亮，<br>像风一样自由。</p>
+    </div>
+    <!-- 幻灯片 3 -->
+    <div class="slide">
+      <div class="emoji-big">💖</div>
+      <div class="photo-title">🌸 被爱包围</div>
+      <p>所有温柔与美好，<br>都向你奔赴而来。</p>
+    </div>
+  </div>
+
+  <!-- 导航点 -->
+  <div class="dots" id="dotsContainer">
+    <button class="dot active" data-index="0"></button>
+    <button class="dot" data-index="1"></button>
+    <button class="dot" data-index="2"></button>
+  </div>
+
+  <!-- 左右箭头 -->
+  <button class="arrow arrow-left" id="prevBtn">‹</button>
+  <button class="arrow arrow-right" id="nextBtn">›</button>
+</div>
+
+<script>
+  (function() {
+    const wrapper = document.getElementById('slidesWrapper');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+
+    // 更新幻灯片位置 & 圆点状态
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // 事件绑定
+    dots.forEach((dot) => {
+      dot.addEventListener('click', function(e) {
+        const idx = parseInt(this.getAttribute('data-index'), 10);
+        if (!isNaN(idx) && idx !== currentIndex) {
+          goToSlide(idx);
+        }
+      });
+    });
+
+    prevBtn.addEventListener('click', function() {
+      goToSlide(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      goToSlide(currentIndex + 1);
+    });
+
+    // 键盘左右键支持
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    // 触摸滑动支持 (简单)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    carousel.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) { // 滑动阈值
+        if (diff > 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      }
+    }, { passive: true });
+
+    // 初始化
+    goToSlide(0);
+  })();
+</script>
+</body>
+</html>      font-family: 'Dancing Script', 'ZCOOL KuaiLe', cursive;
       font-size: clamp(2.4rem, 12vw, 4.8rem);
       font-weight: 700;
       color: #ffe9b0;
