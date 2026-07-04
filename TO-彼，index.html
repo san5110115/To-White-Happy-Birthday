@@ -74,6 +74,20 @@
       max-width: 800px;
     }
 
+    .opening-title {
+      font-family: 'Dancing Script', 'ZCOOL KuaiLe', cursive;
+      font-size: clamp(3rem, 14vw, 6rem);
+      font-weight: 700;
+      color: #ffe9b0;
+      text-shadow: 0 0 24px rgba(255, 200, 100, 0.7), 0 6px 14px rgba(0,0,0,0.5);
+      letter-spacing: 4px;
+      line-height: 1.2;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
     /* 图片容器 */
     .photo-frame {
       width: 90%;
@@ -252,43 +266,50 @@
 <div class="fullscreen-carousel" id="carousel">
   <div class="slides-wrapper" id="slidesWrapper">
 
-    <!-- 1. 花之日 -->
+    <!-- 0. 开场标题 -->
     <div class="slide" data-index="0">
-      <div class="photo-title">🌸 花之日</div>
-      <div class="photo-frame"><img src="1.JPG" alt="花之日"></div>
+      <div class="opening-title">生日快乐，彼小猫</div>
+    </div>
+
+    <!-- 1. 花之日 -->
+    <div class="slide" data-index="1">
+      <div class="photo-title">🌻 花之日</div>
+      <div class="photo-frame"><img src="1.jpg" alt="花之日"></div>
     </div>
     <!-- 2. 小王子 · B612 -->
-    <div class="slide" data-index="1">
+    <div class="slide" data-index="2">
       <div class="photo-title">🌟 小王子 · B612</div>
-      <div class="photo-frame"><img src="2.JPG" alt="小王子- B612号小行星"></div>
+      <div class="photo-frame"><img src="2.jpeg" alt="小王子- B612号小行星"></div>
     </div>
     <!-- 3. 四叶草 -->
-    <div class="slide" data-index="2">
+    <div class="slide" data-index="3">
       <div class="photo-title">🍀 四叶草</div>
       <div class="photo-frame"><img src="3.JPG" alt="四叶草"></div>
     </div>
     <!-- 4. INFP & ISTJ -->
-    <div class="slide" data-index="3">
+    <div class="slide" data-index="4">
       <div class="photo-title">💫 INFP & ISTJ</div>
       <div class="photo-frame"><img src="4.JPG" alt="INFP & ISTJ"></div>
     </div>
     <!-- 5. 偷拍 -->
-    <div class="slide" data-index="4">
+    <div class="slide" data-index="5">
       <div class="photo-title">📸 偷拍</div>
       <div class="photo-frame"><img src="5.JPG" alt="偷拍"></div>
     </div>
     <!-- 6. 睡觉时间到 -->
-    <div class="slide" data-index="5">
+    <div class="slide" data-index="6">
       <div class="photo-title">😴 睡觉时间到</div>
       <div class="photo-frame"><img src="6.JPG" alt="睡觉时间到"></div>
     </div>
-    <!-- 7. 训练程子 + 全屏祝福 + 烟花 -->
-    <div class="slide" data-index="6">
-      <div class="photo-title">🏋️ 训练程子</div>
+    <!-- 7. 训练程子 -->
+    <div class="slide" data-index="7">
+      <div class="photo-title">训练程子</div>
       <div class="photo-frame"><img src="7.JPG" alt="训练程子"></div>
-      <!-- 全屏祝福层 -->
+    </div>
+
+    <!-- 8. 全屏祝福层（最后一页） -->
+    <div class="slide" data-index="8">
       <div class="birthday-message">
-        <h1>🎂 生日快乐</h1>
         <p>愿你的世界永远有花、有光、<br>有期待新一天到来的理由</p>
       </div>
       <canvas id="fireworks-canvas"></canvas>
@@ -352,7 +373,11 @@
           canvas.style.display = 'none';
           const ctx = canvas.getContext('2d');
           if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
-          // 停止动画
+          fireworksActive = false;
+          if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+          }
           if (window._fireworkFrame) {
             cancelAnimationFrame(window._fireworkFrame);
             window._fireworkFrame = null;
@@ -499,6 +524,7 @@
         }
 
         animationFrame = requestAnimationFrame(animate);
+        window._fireworkFrame = animationFrame;
       }
 
       // 初始生成几朵
